@@ -83,7 +83,7 @@
 //'points(grid, right, col = 4)
 //'segments(grid,left, grid, right)
 //'
-//'@references Groeneboom, P. and Hendrickx, K. (2017). The nonparametric bootstrap for the current status model. \url{https://arxiv.org/abs/1701.07359}
+//'@references Groeneboom, P. and Hendrickx, K. (2017). The nonparametric bootstrap for the current status model. Electronic Journal of Statistics 11(2):3446-3848.
 //'
 //'@export
 // [[Rcpp::export]]
@@ -489,7 +489,7 @@ List ComputeConfIntervals(DataFrame data, NumericVector x, double alpha, Numeric
 //'bw <- ComputeBW(data =A, x = grid)
 //'plot(grid, bw)
 //'
-//'@references Groeneboom, P. and Hendrickx, K. (2017). The nonparametric bootstrap for the current status model. \url{https://arxiv.org/abs/1701.07359}
+//'@references Groeneboom, P. and Hendrickx, K. (2017). The nonparametric bootstrap for the current status model. Electronic Journal of Statistics 11(2):3446-3848.
 //'@export
 // [[Rcpp::export]]
 NumericVector ComputeBW(DataFrame data, NumericVector x)
@@ -737,16 +737,23 @@ NumericVector ComputeBW(DataFrame data, NumericVector x)
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     // Select the optimal bandwidth and bias estimate
 
+    double min;
+
     for (i=1;i<=npoints;i++)
     {
-    hmin1[i]=cc[1]*pow(N,-1.0/4);
+      hmin1[i]=cc[1]*pow(N,-1.0/4);
+      min=MSE[i][1];
 
-    for (j=2;j<=nIterH;j++)
-    {
-    if (MSE[i][j]<MSE[i][j-1])
-    hmin1[i]=cc[j]*pow(N,-1.0/4);
+      for (j=2;j<=nIterH;j++)
+      {
+        if (MSE[i][j]<min)
+        {
+          min=MSE[i][j];
+          hmin1[i]=cc[j]*pow(N,-1.0/4);
+        }
+      }
     }
-    }
+
 
 
     NumericVector out3(npoints);

@@ -32,8 +32,7 @@
 //'     \item{mle}{MLE evaluated at the jump locations}
 //' }
 //'
-//'@references Groeneboom, P. and Hendrickx, K. (2017). The nonparametric bootstrap for the current status model. \url{https://arxiv.org/abs/1701.07359}
-//'
+//'@references Groeneboom, P. and Hendrickx, K. (2017). The nonparametric bootstrap for the current status model. Electronic Journal of Statistics 11(2):3446-3848.
 //'@seealso \code{\link{ComputeConfIntervals}}
 //'
 //'
@@ -171,7 +170,7 @@ DataFrame ComputeMLE(DataFrame data)
 //'
 //'@return SMLE(x) Smoothed Maximum Likelihood Estimator. This is a vector of size \code{length(x)} containing the values of the SMLE for each point in the vector x.
 //'
-//'@references Groeneboom, P. and Hendrickx, K. (2017). The nonparametric bootstrap for the current status model. \url{https://arxiv.org/abs/1701.07359}
+//'@references Groeneboom, P. and Hendrickx, K. (2017). The nonparametric bootstrap for the current status model. Electronic Journal of Statistics 11(2):3446-3848.
 //'
 //'@seealso \code{\link{ComputeConfIntervals}}
 //'
